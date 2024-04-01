@@ -60,7 +60,7 @@
 
 # HALF SUBTRACTOR
 ## AIM
-#### To Simulate the Half Adder using Vivado software
+#### To Simulate the Half Subtractor using Vivado software
 ## APPARATUS REQUIRED
 #### Vivado 2023.2 Software
 ## PROCEDURE
@@ -71,9 +71,141 @@
     *
     *
     *
+# PROGRAM
+    module half_subtractor(
+    input A,
+    input B, 
+    output Diff, 
+    output Borrow 
+    );
+
+    assign Diff = A ^ B;
+    assign Borrow = ~A & B; 
+    endmodule
 # Truth Table
 ![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/e2723d53-637c-4a27-bc05-8dc4abf65d61)
 # Circuit Diagram
+![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/e679bf7c-3d51-4248-9707-20ab07e92699)
+![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/56520178-36bd-4f0d-82f5-88d1594619d1)
+# OUTPUT
+![half subtractor output](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/8bc9f58c-6de7-422b-a27c-3e27b71a2ecd)
+## RESULT
+#### Thus the halfsubtractor  program is studied and simulated using the software successfully
 
+# FULL SUBTRACTOR
+## AIM
+#### To Simulate the Full Subtractor using Vivado software
+## APPARATUS REQUIRED
+#### Vivado 2023.2 Software
+## PROCEDURE
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+ # PROGRAM 
+    module full_subtractor(
+    input A, // Minuend
+    input B, // Subtrahend
+    input Cin, // Borrow input
+    output Diff, // Difference
+    output Bout // Borrow output
+    );
 
+    wire D1, B1, B2;
     
+    // First half subtractor
+    half_subtractor HS1(.A(A), .B(B), .Diff(D1), .Borrow(B1));
+    
+    // Second half subtractor
+    half_subtractor HS2(.A(D1), .B(Cin), .Diff(Diff), .Borrow(B2));
+    
+    // OR gate to compute final borrow output
+    assign Bout = B1 | B2;
+    endmodule
+ # Truth Table  And Circuit Diagram    
+![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/bcd29542-b0ce-46f3-bf07-5ce97223fa5d)
+#  OUTPUT
+![full subtractor output](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/6afedcaa-90b2-4754-8d3b-36ff3dbedfce)
+## RESULT
+#### Thus the fullsubtractor  program is studied and simulated using the software successfully
+
+# DECODER
+## AIM
+#### To Simulate the Decoder using Vivado software
+## APPARATUS REQUIRED
+#### Vivado 2023.2 Software
+## PROCEDURE
+    *
+    *
+    *
+    *
+    *
+    *
+    *
+ # PROGRAM
+    module decoder_2to4(
+    input [1:0] select_in, // Select input
+    output reg [3:0] data_out // Decoded output
+    );
+    
+    always @* begin
+        case(select_in)
+            2'b00: data_out = 4'b0001; // Output at index 0
+            2'b01: data_out = 4'b0010; // Output at index 1
+            2'b10: data_out = 4'b0100; // Output at index 2
+            2'b11: data_out = 4'b1000; // Output at index 3
+            default: data_out = 4'bxxxx; // Invalid input, outputs all 'x'
+        endcase
+    end
+    
+    endmodule
+   # Truth Table And Circuit Diagram
+   ![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/670c4073-9d6a-4412-94c7-879505f1bdfa)
+   # OUTPUT
+   ![decoder output](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/c5b79e9c-9acd-4f82-aded-88af6a6da4f3)
+   ## RESULT
+   #### Thus the Decoder  program is studied and simulated using the software successfully
+
+   # ENCODER
+   ## AIM
+   #### To Simulate the Encoder using Vivado software
+   ## APPARATUS REQUIRED
+  #### Vivado 2023.2 Software
+   ## PROCEDURE
+        *
+    *
+    *
+    *
+    *
+    *
+    *
+ # PROGRAM
+    module encoder_3to1(
+    input [2:0] data_in, // Input data
+    output [1:0] encoded_out // Encoded output
+    );
+    
+    assign encoded_out[0] = |data_in; // Bitwise OR operation on all input bits
+    assign encoded_out[1] = &data_in; // Bitwise AND operation on all input bits
+    
+    endmodule
+ # Truth Table 
+ ![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/4bf3305c-cf83-49a8-93c4-c85662e7833b)
+ # Circuit Diagram
+ ![image](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/e24ae5e1-efa8-47a5-aac8-75b721b18422)
+
+
+ 
+
+
+   
+    
+
+
+
+
+ 
+
