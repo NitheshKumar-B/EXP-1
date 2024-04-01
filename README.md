@@ -25,4 +25,4 @@
 ## OUTPUT
 ![half adder output](https://github.com/NitheshKumar-B/EXP-1/assets/161724980/34bf5e77-672b-4131-a606-e91460b8e10e)
 ## RESULT
-#### Thus the halfadder program is studied and simulated using the software sucesssfully
+#### Thus the halfadder program is studied and simulated using the software successfully
